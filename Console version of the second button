@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "rus"); 
+
+	string counter_string, input, output, t, control_value; // строчкові змінні
+	int counter; // лічильник
+	bool fg1=false; //флаг - сигналізує, що буква прочитана
+
+	cout << "Введите строку для развёртывания: ";
+	cin >> input;
+
+	//input = "a10d3f1h7j2";
+
+	control_value = "";
+	
+	for (int i = 0; i < input.length(); i++)
+	{
+		
+		if (!(48 <= (int)input[i] && (int)input[i] <= 57)) {t += input[i]; fg1 = true;}
+		if (48 <= (int)input[i] && (int)input[i] <= 57){counter_string += input[i];}	 
+		if (fg1 == true && !(48 <= (int)input[i+1] && (int)input[i+1] <= 57)) {
+			if(counter_string.length()>0)counter = stoi(counter_string);
+			for (int j = 0; j < counter; j++)
+			{
+				cout << t;
+				control_value += t;
+			}
+			fg1 = false;
+			counter_string = "";
+			t = "";
+			counter = 1;
+		}
+		
+	}
+	cout << "   " << control_value.length();
+	//cout << ms;
+	//cout << t << endl;
+	//cout << stoi(ms);
+
+}
+
+
